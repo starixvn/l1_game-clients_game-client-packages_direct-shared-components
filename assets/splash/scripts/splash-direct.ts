@@ -1,22 +1,24 @@
 import gc from "@sg/game-client-base";
 import { _decorator, Component, director, Label } from "cc";
 import Observer from "observer";
-
 import GameConnection from "db://shared-components/shared/common-components/game-connection";
-import { ErrorMessage } from "db://shared-components/splash/scripts/error-message";
 
 const { ccclass, property } = _decorator;
 const { observer, handle, render } = Observer;
 const { Auth, ChipSetting, sentryLogger, BrowserDomUtils, App, AppTypes } = gc;
 
+declare global {
+    interface Window {
+        setSplashScreenNoticeMessage?: Function;
+        updateLoadingPercentage?: Function;
+    }
+}
+
 @ccclass
 @observer
 export default class Splash extends Component {
-    @property(ErrorMessage)
-    cpnMessage: ErrorMessage = null;
-
     @property(Label)
-    percentResourceLoad: Label = null;
+    label: Label = null;
 
     gameConnection: GameConnection = null;
 
@@ -90,13 +92,14 @@ export default class Splash extends Component {
 
     @render(Auth.AuthStore, (store) => store.ssoErrorMessage, { fireImmediately: false })
     renderMessage(message: string) {
-        this.cpnMessage.reset();
-        this.cpnMessage.setMessage(message);
+        this.label && (this.label.string = message);
+        window.setSplashScreenNoticeMessage?.(message);
     }
 
     updateProgressBar(progress: number) {
-        console.log("progress", progress);
-        localStorage.setItem("loading", progress.toString());
+        const percentage = Math.round(progress * 100);
+        this.label && (this.label.string = `${percentage}%`);
+        window.updateLoadingPercentage?.(percentage);
     }
 
     loadSceneGame() {
@@ -125,13 +128,4 @@ export default class Splash extends Component {
 
     @handle(ChipSetting.ChipSettingHandler)
     loadChipSetting() {}
-
-    @render(Auth.AuthStore, (store) => store.isShowSignName, { fireImmediately: false })
-    handleShowSignName(isShowSignName: boolean) {
-        this.updateContentUnderBackground(!isShowSignName);
-    }
-
-    private updateContentUnderBackground(status: boolean) {
-        this.cpnMessage && (this.cpnMessage.node.active = status);
-    }
 }
