@@ -14,14 +14,28 @@ export class NoticeDirectCmp extends NoticeCmp {
         showBtnConfirmButton?: boolean;
         noticeInfo?: gc.Notices.NoticeInfo;
     }) {
-        const notToHidePopup =
-            data.noticeInfo === gc.Notices.NoticeInfo.DisabledGame || data.noticeInfo === gc.Notices.NoticeInfo.LostGameConnection;
-        if (notToHidePopup) {
-            const bgCpm = this.nodeFadeBackground?.getComponent(Button);
-            bgCpm && (bgCpm.clickEvents = []);
-            data.showBtnConfirmButton = false;
+        const modifiedData = { ...data };
+
+        if (this.isBlockingNotice(modifiedData.noticeInfo)) {
+            this.disableBackgroundClick();
+            modifiedData.showBtnConfirmButton = false;
         }
 
-        super.setData(data);
+        if (modifiedData.noticeInfo === gc.Notices.NoticeInfo.ExcludedGame) {
+            modifiedData.onClose = () => window.location.reload();
+        }
+
+        super.setData(modifiedData);
+    }
+
+    private isBlockingNotice(noticeInfo?: gc.Notices.NoticeInfo): boolean {
+        return noticeInfo === gc.Notices.NoticeInfo.DisabledGame || noticeInfo === gc.Notices.NoticeInfo.LostGameConnection;
+    }
+
+    private disableBackgroundClick(): void {
+        const bgCpm = this.nodeFadeBackground?.getComponent(Button);
+        if (bgCpm) {
+            bgCpm.clickEvents = [];
+        }
     }
 }
