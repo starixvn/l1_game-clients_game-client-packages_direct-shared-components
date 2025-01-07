@@ -42,8 +42,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -340.857,
-      "y": -309.31,
+      "x": -338.28600000000006,
+      "y": 391.115,
       "z": 0
     },
     "_lrot": {
@@ -1679,7 +1679,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -103,
+      "y": -113,
       "z": 0
     },
     "_lrot": {
@@ -1691,8 +1691,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.25,
+      "y": 1.25,
       "z": 1
     },
     "_mobility": 0,
@@ -2178,7 +2178,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -168,
+      "y": -188,
       "z": 0
     },
     "_lrot": {
@@ -2190,8 +2190,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.25,
+      "y": 1.25,
       "z": 1
     },
     "_mobility": 0,
@@ -2668,7 +2668,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -233,
+      "y": -263,
       "z": 0
     },
     "_lrot": {
@@ -2680,8 +2680,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.25,
+      "y": 1.25,
       "z": 1
     },
     "_mobility": 0,
@@ -3298,7 +3298,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -298,
+      "y": -338,
       "z": 0
     },
     "_lrot": {
@@ -3310,8 +3310,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.25,
+      "y": 1.25,
       "z": 1
     },
     "_mobility": 0,
@@ -3600,7 +3600,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 74.4,
-      "height": 348
+      "height": 388
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -3635,10 +3635,10 @@
     "_startAxis": 0,
     "_paddingLeft": 0,
     "_paddingRight": 0,
-    "_paddingTop": 73,
+    "_paddingTop": 83,
     "_paddingBottom": 20,
     "_spacingX": 0,
-    "_spacingY": 5,
+    "_spacingY": 15,
     "_verticalDirection": 1,
     "_horizontalDirection": 0,
     "_constraint": 0,
@@ -3829,7 +3829,7 @@
     },
     "_alignFlags": 9,
     "_target": null,
-    "_left": 20.34299999999996,
+    "_left": 33.33899999999994,
     "_right": 0,
     "_top": 286.51,
     "_bottom": 0,
@@ -3859,7 +3859,6 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "65l+YerrZErKew1rtVfZ9W",
-    "targetOverrides": null
+    "fileId": "65l+YerrZErKew1rtVfZ9W"
   }
 ]
