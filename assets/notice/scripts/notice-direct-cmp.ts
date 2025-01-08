@@ -2,6 +2,7 @@ import { Button, _decorator } from "cc";
 const { ccclass } = _decorator;
 
 import gc from "@sg/game-client-base";
+import LocalizedLabelWithFormat from "db://i18n/LocalizedLabelWithFormat";
 import { NoticeCmp, NoticeType } from "db://shared-components/shared/common-components/notice/scripts/notice-cmp";
 
 @ccclass()
@@ -18,12 +19,13 @@ export class NoticeDirectCmp extends NoticeCmp {
 
         if (this.isBlockingNotice(modifiedData.noticeInfo)) {
             this.disableBackgroundClick();
-            modifiedData.showBtnConfirmButton = false;
         }
 
         if (modifiedData.noticeInfo === gc.Notices.NoticeInfo.ExcludedGame) {
             modifiedData.onClose = () => window.location.reload();
         }
+
+        this.updateButtonLabel(modifiedData.noticeInfo);
 
         super.setData(modifiedData);
     }
@@ -36,6 +38,16 @@ export class NoticeDirectCmp extends NoticeCmp {
         const bgCpm = this.nodeFadeBackground?.getComponent(Button);
         if (bgCpm) {
             bgCpm.clickEvents = [];
+        }
+    }
+
+    private updateButtonLabel(noticeInfo?: gc.Notices.NoticeInfo): void {
+        if (noticeInfo === gc.Notices.NoticeInfo.LostGameConnection) {
+            const lblButton = this.btnConfirm?.getComponentInChildren(LocalizedLabelWithFormat);
+            if (lblButton) {
+                lblButton.key = "Common.reconnect";
+                lblButton.updateLabel();
+            }
         }
     }
 }
