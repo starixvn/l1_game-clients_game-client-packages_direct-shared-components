@@ -5,6 +5,8 @@ import gc from "@sg/game-client-base";
 import LocalizedLabelWithFormat from "db://i18n/LocalizedLabelWithFormat";
 import { NoticeCmp, NoticeType } from "db://shared-components/shared/common-components/notice/scripts/notice-cmp";
 
+const { BrowserDomUtils } = gc;
+
 @ccclass()
 export class NoticeDirectCmp extends NoticeCmp {
     setData(data: {
@@ -22,7 +24,15 @@ export class NoticeDirectCmp extends NoticeCmp {
         }
 
         if (data.noticeInfo === gc.Notices.NoticeInfo.DisabledGame) {
-            data.showBtnConfirmButton = false;
+            modifiedData.showBtnConfirmButton = false;
+        }
+
+        if (data.noticeInfo === gc.Notices.NoticeInfo.ExcludedGame) {
+            const originalOnClose = modifiedData.onClose;
+            modifiedData.onClose = () => {
+                BrowserDomUtils.postMessageToParent({ isNotPermittedToPlay: true });
+                originalOnClose();
+            };
         }
 
         this.updateButtonLabel(modifiedData.noticeInfo);
