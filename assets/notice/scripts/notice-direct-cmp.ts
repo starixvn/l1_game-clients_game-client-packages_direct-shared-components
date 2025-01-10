@@ -21,10 +21,6 @@ export class NoticeDirectCmp extends NoticeCmp {
             this.disableBackgroundClick();
         }
 
-        if (modifiedData.noticeInfo === gc.Notices.NoticeInfo.ExcludedGame) {
-            modifiedData.onClose = () => window.location.reload();
-        }
-
         this.updateButtonLabel(modifiedData.noticeInfo);
 
         super.setData(modifiedData);
