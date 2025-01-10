@@ -21,6 +21,10 @@ export class NoticeDirectCmp extends NoticeCmp {
             this.disableBackgroundClick();
         }
 
+        if (data.noticeInfo === gc.Notices.NoticeInfo.DisabledGame) {
+            data.showBtnConfirmButton = false;
+        }
+
         this.updateButtonLabel(modifiedData.noticeInfo);
 
         super.setData(modifiedData);
