@@ -12,7 +12,7 @@ export class NoticeDirectContainer extends NoticeContainer {
 
     showNotice(notice: gc.Notices.Notice) {
         if (!game.isPaused() && notice) {
-            this.cmpMessage && this.cmpMessage.reset();
+            this.cmpMessage && this.cmpMessage?.reset();
         }
 
         super.showNotice(notice);
