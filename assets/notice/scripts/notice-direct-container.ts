@@ -1,5 +1,6 @@
 import gc from "@sg/game-client-base";
 import { _decorator, game } from "cc";
+import { NoticeCmp } from "db://shared-components/shared/common-components/notice/scripts/notice-cmp";
 import { NoticeContainer } from "db://shared-components/shared/common-components/notice/scripts/notice-container";
 import { RandomWaitingMessage } from "../../splash/scripts/random-waiting-message";
 
@@ -16,5 +17,18 @@ export class NoticeDirectContainer extends NoticeContainer {
         }
 
         super.showNotice(notice);
+    }
+
+    renderUMNotice(noticeDisable: gc.Notices.Notice) {
+        if (!noticeDisable) {
+            this.noticeCmp?.hide();
+            return;
+        }
+
+        if (!this.noticeCmp?.node) {
+            this.cmpMessage?.reset();
+        }
+
+        super.renderUMNotice(noticeDisable);
     }
 }
