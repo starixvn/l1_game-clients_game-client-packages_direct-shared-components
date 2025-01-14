@@ -96,7 +96,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -5.684341886080802e-14,
-      "y": 110.65099999999995,
+      "y": 69.5,
       "z": 0
     },
     "_lrot": {
@@ -175,7 +175,7 @@
     "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 2,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -208,7 +208,7 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 512,
+    "_top": 392,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -237,6 +237,8 @@
       "__id__": 0
     },
     "fileId": "91xOqYKyVGZ5PLyXqp76i6",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -266,7 +268,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0.49999999999994316,
-      "y": 18.668999999999983,
+      "y": -22.5,
       "z": 0
     },
     "_lrot": {
@@ -345,7 +347,7 @@
     "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 2,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -378,7 +380,7 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 667,
+    "_top": 548,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -425,8 +427,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
-      "height": 100
+      "width": 828,
+      "height": 1078
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -451,11 +453,11 @@
     "__prefab": {
       "__id__": 21
     },
-    "_alignFlags": 1,
+    "_alignFlags": 45,
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 0.46423462088698136,
+    "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -465,8 +467,8 @@
     "_isAbsBottom": true,
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 0,
+    "_originalWidth": 100,
+    "_originalHeight": 100,
     "_alignMode": 2,
     "_lockFlags": 0,
     "_id": ""
