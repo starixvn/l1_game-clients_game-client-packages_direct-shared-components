@@ -32,18 +32,15 @@
       },
       {
         "__id__": 169
-      },
-      {
-        "__id__": 171
       }
     ],
     "_prefab": {
-      "__id__": 173
+      "__id__": 171
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -338.28600000000006,
-      "y": 391.115,
+      "x": 0,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -55,8 +52,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.85,
-      "y": 0.85,
+      "x": 1.4,
+      "y": 1.4,
       "z": 1
     },
     "_mobility": 0,
@@ -271,8 +268,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 31.436000000000035,
+      "x": 1.4210854715202004e-14,
+      "y": 26.35699999999997,
       "z": 0
     },
     "_lrot": {
@@ -992,8 +989,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.625,
+      "y": 0.625,
       "z": 1
     },
     "_mobility": 0,
@@ -1106,8 +1103,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 73,
-      "height": 73
+      "width": 57,
+      "height": 57
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -3599,7 +3596,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 74.4,
+      "width": 63,
       "height": 388
     },
     "_anchorPoint": {
@@ -3814,42 +3811,6 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "67lGdJ1d9Cd4LyrZ+nByUB"
-  },
-  {
-    "__type__": "cc.Widget",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 172
-    },
-    "_alignFlags": 9,
-    "_target": null,
-    "_left": 33.33899999999994,
-    "_right": 0,
-    "_top": 286.51,
-    "_bottom": 0,
-    "_horizontalCenter": 0,
-    "_verticalCenter": 0,
-    "_isAbsLeft": true,
-    "_isAbsRight": true,
-    "_isAbsTop": true,
-    "_isAbsBottom": true,
-    "_isAbsHorizontalCenter": true,
-    "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 0,
-    "_alignMode": 2,
-    "_lockFlags": 0,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "2doJrFbRlP4ILfKfRl8WJp"
   },
   {
     "__type__": "cc.PrefabInfo",
