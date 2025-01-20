@@ -1,15 +1,18 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Prefab } from "cc";
+import { _decorator, instantiate, Node, Prefab } from "cc";
 import LoadBoostedOddsContainerPrefab from "db://shared-components/game/boosted-odds/scripts/load-boosted-odds-container-prefab";
 import { bundleManager } from "db://shared-components/shared/common-components/bundle-manager/bundle-manager";
 import Observer from "observer";
 
-const { ccclass } = _decorator;
+const { ccclass, property } = _decorator;
 const { handle, render } = Observer;
 const { Notification } = gc;
 
 @ccclass("LoadBoostedOddsContainerPrefab")
 export default class LoadBoostedOddsDirectContainerPrefab extends LoadBoostedOddsContainerPrefab {
+    @property(Node)
+    iconContainer: Node = null;
+
     protected static override readonly BundleConstants = {
         ...LoadBoostedOddsContainerPrefab.BundleConstants,
         sharePortraitDirectBundle: "shared-portrait-direct-bundle",
@@ -20,6 +23,10 @@ export default class LoadBoostedOddsDirectContainerPrefab extends LoadBoostedOdd
         const prefabPath = LoadBoostedOddsDirectContainerPrefab.BundleConstants.sharePortraitDirectBundle;
 
         return bundleManager.loadAssetsFromBundle<Prefab>(prefabPath, `${rootFolder}/${prefabName}`, Prefab, null);
+    }
+
+    protected addBoostedOddIcon(prfBoostedOddIcon: Prefab) {
+        this.iconContainer && this.iconContainer.addChild(instantiate(prfBoostedOddIcon));
     }
 
     @render(Notification.NotificationStore, (store) => store.isConnected)
