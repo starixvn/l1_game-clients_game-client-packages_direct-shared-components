@@ -25,6 +25,7 @@ export class NoticeDirectCmp extends NoticeCmp {
 
         if (data.noticeInfo === gc.Notices.NoticeInfo.DisabledGame) {
             modifiedData.showBtnConfirmButton = false;
+            modifiedData.onClose = () => {};
         }
 
         if (data.noticeInfo === gc.Notices.NoticeInfo.ExcludedGame) {
