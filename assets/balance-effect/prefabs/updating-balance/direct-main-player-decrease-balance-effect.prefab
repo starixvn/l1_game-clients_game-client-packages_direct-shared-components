@@ -88,7 +88,7 @@
     "fileId": "04zm3GUUlMDJx6MW4ewLrt"
   },
   {
-    "__type__": "6240aFV1DdIw6otId7rutwr",
+    "__type__": "cd643P2dddAn6W1irit4jT3",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -114,12 +114,11 @@
     },
     "startY": 80,
     "destY": 100,
-    "parentNode": null,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "30jMt0P8NAyZ1yS0iKobLI"
+    "fileId": "9dtPS4nzJFFY9on0oLZ3ci"
   },
   {
     "__type__": "cc.PrefabInfo",
