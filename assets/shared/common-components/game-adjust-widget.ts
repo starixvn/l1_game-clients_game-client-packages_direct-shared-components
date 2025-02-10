@@ -1,50 +1,29 @@
-import { _decorator, Component, Enum, Node, UITransform, Widget } from "cc";
+import { _decorator, Component, Node, UITransform, Widget } from "cc";
 import { EDITOR } from "cc/env";
 
 const { ccclass, property } = _decorator;
-
-export enum WidgetPolicy {
-    Bottom = 0,
-    Top = 1,
-}
 
 /**
  * Manages widget positioning based on screen size and policy
  */
 @ccclass("GameAdjustWidget")
 export class GameAdjustWidget extends Component {
-    @property({ type: Node })
-    private gameNode: Node = null;
-
     @property
-    value: number = 0;
-
-    @property({ type: Enum(WidgetPolicy) })
-    protected _policy = WidgetPolicy.Bottom;
-
-    @property({ type: Enum(WidgetPolicy) })
-    public get policy(): WidgetPolicy {
-        return this._policy;
-    }
-
-    public set policy(value: WidgetPolicy) {
-        this._policy = value;
-        this.updateDisplay();
-    }
+    value: number = -0.1;
 
     private gameWidget: Widget = null;
 
     public onLoad(): void {
-        this.gameWidget = this.gameNode.getComponent(Widget);
+        this.gameWidget = this.node.getComponent(Widget);
     }
 
     public onEnable(): void {
-        this.node.on(Node.EventType.SIZE_CHANGED, this.updateDisplay, this);
+        this.node.parent.on(Node.EventType.SIZE_CHANGED, this.updateDisplay, this);
         this.updateDisplay();
     }
 
     public onDisable(): void {
-        this.node.off(Node.EventType.SIZE_CHANGED, this.updateDisplay, this);
+        this.node.parent.off(Node.EventType.SIZE_CHANGED, this.updateDisplay, this);
     }
 
     public update(delta: number): void {
@@ -55,21 +34,25 @@ export class GameAdjustWidget extends Component {
 
     protected updateDisplay(): void {
         if (!this.gameWidget) return;
-
-        this.gameWidget.updateAlignment();
-
         this.gameWidget.verticalCenter = this.calculateVerticalCenter();
     }
 
     private calculateVerticalCenter(): number {
-        const centerNodeHeight = this.node.getComponent(UITransform).height;
-        const scaleY = this.gameNode.scale.y;
-        const gameHeight = this.gameNode.getComponent(UITransform).height * scaleY;
+        const parentHeight = this.node.parent.getComponent(UITransform).height;
+        const scaleY = this.node.scale.y;
+        const gameHeight = this.node.getComponent(UITransform).height * scaleY;
+        const deltaHeight = parentHeight - gameHeight;
+        const maxOffset = deltaHeight / 2;
 
-        if (this.value * gameHeight >= (centerNodeHeight - gameHeight) / 2) {
+        if (parentHeight <= gameHeight) {
             return 0;
         }
 
-        return this.policy === WidgetPolicy.Bottom ? -this.value : this.value;
+        if (Math.abs(this.value) * parentHeight >= maxOffset) {
+            const normalizedOffset = maxOffset / parentHeight;
+            return this.value < 0 ? -normalizedOffset : normalizedOffset;
+        }
+
+        return this.value;
     }
 }
