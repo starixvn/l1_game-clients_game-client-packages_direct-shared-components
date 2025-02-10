@@ -8,7 +8,7 @@ const { ccclass, property } = _decorator;
 const { handle, render } = Observer;
 const { Notification } = gc;
 
-@ccclass("LoadBoostedOddsContainerPrefab")
+@ccclass("LoadBoostedOddsDirectContainerPrefab")
 export default class LoadBoostedOddsDirectContainerPrefab extends LoadBoostedOddsContainerPrefab {
     @property(Node)
     iconContainer: Node = null;
@@ -25,7 +25,7 @@ export default class LoadBoostedOddsDirectContainerPrefab extends LoadBoostedOdd
         return bundleManager.loadAssetsFromBundle<Prefab>(prefabPath, `${rootFolder}/${prefabName}`, Prefab, null);
     }
 
-    protected addBoostedOddIcon(prfBoostedOddIcon: Prefab) {
+    protected override addBoostedOddIcon(prfBoostedOddIcon: Prefab) {
         this.iconContainer && this.iconContainer.addChild(instantiate(prfBoostedOddIcon));
     }
 
