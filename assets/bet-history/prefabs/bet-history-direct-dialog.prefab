@@ -2028,7 +2028,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "LỊCH SỬ",
+    "_string": "BET HISTORY",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 26,
@@ -2110,7 +2110,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 110.24609375,
+      "width": 177.1376953125,
       "height": 70.56
     },
     "_anchorPoint": {
@@ -2706,7 +2706,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 458,
+      "y": 460,
       "z": 0
     },
     "_lrot": {
@@ -2778,7 +2778,7 @@
     },
     "_left": 3,
     "_right": 3,
-    "_top": 2,
+    "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
