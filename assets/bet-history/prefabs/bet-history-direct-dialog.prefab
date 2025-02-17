@@ -330,7 +330,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 828,
-      "height": 1107
+      "height": 1106.9999999999998
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2028,7 +2028,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "BET HISTORY",
+    "_string": "LỊCH SỬ",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 26,
@@ -2110,7 +2110,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 177.1376953125,
+      "width": 110.24609375,
       "height": 70.56
     },
     "_anchorPoint": {
@@ -8051,7 +8051,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
+      "width": 712,
       "height": 0
     },
     "_anchorPoint": {
@@ -9287,7 +9287,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 748,
-      "height": 1033
+      "height": 1032.9999999999998
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9366,7 +9366,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 828,
-      "height": 1107
+      "height": 1106.9999999999998
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9519,7 +9519,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 828,
-      "height": 1107
+      "height": 1106.9999999999998
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
