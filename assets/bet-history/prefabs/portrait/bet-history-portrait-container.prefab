@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "bet-history-container",
+    "_name": "bet-history-portrait-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bet-history-container",
+    "_name": "bet-history-portrait-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -76,8 +76,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 828,
-      "height": 1106.9999999999998
+      "width": 756,
+      "height": 1344
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -103,7 +103,7 @@
       "__id__": 5
     },
     "prefab": {
-      "__uuid__": "b1356ac8-8956-487d-8e5f-3dbdb836d204",
+      "__uuid__": "2c8824d2-547e-470e-b7d8-73e3507b4966",
       "__expectedType__": "cc.Prefab"
     },
     "headerPrefab": null,
