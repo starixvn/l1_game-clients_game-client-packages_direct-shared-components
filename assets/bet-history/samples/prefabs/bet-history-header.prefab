@@ -229,7 +229,7 @@
       "a": 255
     },
     "_string": "Time",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 44,
     "_fontSize": 44,
@@ -573,7 +573,7 @@
       "a": 255
     },
     "_string": "Round",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 44,
     "_fontSize": 44,
@@ -917,7 +917,7 @@
       "a": 255
     },
     "_string": "Result",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 44,
     "_fontSize": 44,
@@ -1533,7 +1533,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 230,
+      "x": 294,
       "y": 1.1368683772161603e-13,
       "z": 0
     },
@@ -1583,7 +1583,7 @@
       "a": 255
     },
     "_string": "Stake",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 2,
     "_verticalAlign": 1,
     "_actualFontSize": 44,
     "_fontSize": 44,
@@ -1669,7 +1669,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0.5
     },
     "_id": ""
@@ -1736,8 +1736,8 @@
     "_target": {
       "__id__": 1
     },
-    "_left": 0.7039965938254831,
-    "_right": 0.14844103826992755,
+    "_left": 0.7812912798158212,
+    "_right": 0.14492753623188404,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -2179,8 +2179,6 @@
       "__id__": 0
     },
     "fileId": "67p63Sbq1K6oBvRCCRKr2e",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
