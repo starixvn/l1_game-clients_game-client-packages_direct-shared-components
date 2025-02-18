@@ -107,11 +107,11 @@
       "__expectedType__": "cc.Prefab"
     },
     "headerPrefab": {
-      "__uuid__": "406cedd4-ddd1-4baa-8e78-750681b3cb7e",
+      "__uuid__": "f7785499-c9d4-4506-aa04-fc43d5a4468a",
       "__expectedType__": "cc.Prefab"
     },
     "bodyItemPrefab": {
-      "__uuid__": "c6db1199-90b4-4782-8fec-77eac4fee8dc",
+      "__uuid__": "05c1ff42-0552-491c-8833-194fc8a55ce7",
       "__expectedType__": "cc.Prefab"
     },
     "resultPrefab": {
