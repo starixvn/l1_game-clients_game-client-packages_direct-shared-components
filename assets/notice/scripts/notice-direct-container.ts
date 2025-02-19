@@ -7,17 +7,25 @@ const { ccclass, property } = _decorator;
 
 @ccclass("NoticeDirectContainer")
 export class NoticeDirectContainer extends NoticeContainer {
-    @property(RandomWaitingMessage)
+    @property
+    isUseCpmRandomMessage = false;
+
+    @property({
+        visible: function () {
+            return this.isUseCpmRandomMessage;
+        },
+        type: RandomWaitingMessage,
+    })
     private cmpMessage: RandomWaitingMessage = null;
 
-    showNotice(notice: gc.Notices.Notice): void {
+    async showNotice(notice: gc.Notices.Notice) {
         if (!game.isPaused() && notice) {
             this.resetMessage();
         }
         super.showNotice(notice);
     }
 
-    renderUMNotice(noticeDisable: gc.Notices.Notice): void {
+    async renderUMNotice(noticeDisable: gc.Notices.Notice) {
         if (!noticeDisable) {
             this.noticeCmp?.hide();
             return;
