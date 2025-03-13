@@ -217,7 +217,7 @@
     "key": "game_background",
     "extension": "webp",
     "localization": false,
-    "originalSize": true,
+    "originalSize": false,
     "_id": ""
   },
   {
@@ -2288,7 +2288,6 @@
       "__id__": 0
     },
     "fileId": "c6+dS0gdNCR5jwq4phB/UF",
-    "instance": null,
     "targetOverrides": [],
     "nestedPrefabInstanceRoots": [
       {
