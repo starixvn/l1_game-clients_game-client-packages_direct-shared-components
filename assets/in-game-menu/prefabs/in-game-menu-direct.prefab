@@ -46,7 +46,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -351.5,
-      "y": 731.5,
+      "y": 505,
       "z": 0
     },
     "_lrot": {
@@ -622,8 +622,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 57,
-      "height": 57
+      "width": 67,
+      "height": 67
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -736,7 +736,7 @@
     "__prefab": {
       "__id__": 25
     },
-    "type": 0,
+    "type": 1,
     "_id": ""
   },
   {
@@ -3243,6 +3243,7 @@
       "__id__": 0
     },
     "fileId": "65l+YerrZErKew1rtVfZ9W",
+    "instance": null,
     "targetOverrides": null
   }
 ]

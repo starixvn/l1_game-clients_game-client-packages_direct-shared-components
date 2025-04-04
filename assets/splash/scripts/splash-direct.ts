@@ -2,10 +2,11 @@ import gc from "@sg/game-client-base";
 import { _decorator, Node, Prefab } from "cc";
 import SplashComponentBase from "db://shared-components/splash/scripts/components/splash-component-base";
 import Observer from "observer";
-const { AppTypes } = gc;
+import { AdjustPortraitResolution } from "../../shared/common-components/adjust-portrait-resolution";
 
 const { ccclass, property } = _decorator;
-const { observer } = Observer;
+const { observer, render } = Observer;
+const { Auth, AppTypes } = gc;
 
 @ccclass
 @observer
@@ -18,6 +19,13 @@ export default class SplashDirect extends SplashComponentBase {
 
     @property({ type: Prefab, override: true, visible: false })
     prefabCustomize: Prefab = null;
+
+    @render(Auth.AuthStore, (store) => store.system)
+    adjustResolution(system: number) {
+        if (system && system !== AppTypes.MobileDirect) {
+            this.node.addComponent(AdjustPortraitResolution);
+        }
+    }
 
     override get sceneName() {
         if (this.system === AppTypes.MobileDirect) {
