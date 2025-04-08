@@ -34,4 +34,8 @@ export default class SplashDirect extends SplashComponentBase {
 
         return "portrait-game";
     }
+
+    updateProgressBar(progress: number): void {
+        this.percentResourceLoad && (this.percentResourceLoad.string = `${Math.round(progress * 100)}%`);
+    }
 }
