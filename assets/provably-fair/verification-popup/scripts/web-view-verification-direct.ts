@@ -12,7 +12,6 @@ export default class WebViewVerificationDirect extends WebViewVerification {
     @property({ override: true, visible: false })
     lblRound: Label = null;
 
-    @handle(PFVerification.WebViewPFVerificationHandlers.GetVerificationURL)
     initUrl(specialDirection = "", scrollToId = "") {
         const theme = "blue";
         specialDirection += "&o=portrait";
