@@ -1338,7 +1338,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 766,
-      "height": 31
+      "height": 39.06
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1378,7 +1378,7 @@
     "_verticalAlign": 1,
     "_actualFontSize": 26,
     "_fontSize": 26,
-    "_fontFamily": "Arial",
+    "_fontFamily": "Helvetica, Verdana, Arial, sans-serif, system-ui",
     "_lineHeight": 31,
     "_overflow": 3,
     "_enableWrapText": false,
@@ -1389,7 +1389,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 2,
+    "_cacheMode": 0,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1569,6 +1569,8 @@
       "__id__": 0
     },
     "fileId": "9a6KR6DAdAJY7rOQ8Sbv+f",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
