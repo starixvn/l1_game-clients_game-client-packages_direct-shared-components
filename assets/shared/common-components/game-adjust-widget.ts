@@ -37,6 +37,7 @@ export class GameAdjustWidget extends Component {
             return;
         }
         this.gameWidget.verticalCenter = this.calculateVerticalCenter();
+        this.gameWidget.isAbsoluteVerticalCenter = false;
     }
 
     private calculateVerticalCenter(): number {
