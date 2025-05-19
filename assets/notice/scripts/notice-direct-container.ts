@@ -1,43 +1,32 @@
 import gc from "@sg/game-client-base";
-import { _decorator, game } from "cc";
+import { _decorator } from "cc";
 import { NoticeContainer } from "db://shared-components/shared/common-components/notice/scripts/notice-container";
-import { RandomWaitingMessage } from "../../splash/scripts/random-waiting-message";
+import { NoticeDirectCmp } from "./notice-direct-cmp";
+import { GameGuideUtils } from "db://shared-components/game/game-guide/scripts/utils/game-guide-utils";
+import Observer from "observer";
 
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
+
+const { render } = Observer;
+
+const { Auth } = gc;
 
 @ccclass("NoticeDirectContainer")
 export class NoticeDirectContainer extends NoticeContainer {
-    @property
-    isUseCpmRandomMessage = false;
+    noticeCmp: NoticeDirectCmp = null;
 
-    @property({
-        visible: function () {
-            return this.isUseCpmRandomMessage;
-        },
-        type: RandomWaitingMessage,
-    })
-    private cmpMessage: RandomWaitingMessage = null;
+    private appType: number = 0;
 
-    async showNotice(notice: gc.Notices.Notice) {
-        if (!game.isPaused() && notice) {
-            this.resetMessage();
-        }
-        super.showNotice(notice);
+    @render(Auth.AuthStore, (store) => store.system)
+    storeAppType(appType: number) {
+        this.appType = appType;
     }
 
-    async renderUMNotice(noticeDisable: gc.Notices.Notice) {
-        if (!noticeDisable) {
-            this.noticeCmp?.hide();
-            return;
-        }
-
-        if (!this.noticeCmp?.node) {
-            this.resetMessage();
-        }
-        super.renderUMNotice(noticeDisable);
-    }
-
-    private resetMessage(): void {
-        this.cmpMessage?.reset();
+    protected override async showNoticeComponent(notice: gc.Notices.Notice) {
+        await GameGuideUtils.hideWebViewGuide();
+        const node = this.createNode();
+        this.noticeCmp = node.getComponent<NoticeDirectCmp>(NoticeDirectCmp);
+        this.noticeCmp.setAppType(this.appType);
+        this.noticeCmp.setData(notice);
     }
 }

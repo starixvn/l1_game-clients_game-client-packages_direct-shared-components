@@ -5,10 +5,16 @@ import gc from "@sg/game-client-base";
 import LocalizedLabelWithFormat from "db://i18n/LocalizedLabelWithFormat";
 import { NoticeCmp, NoticeType } from "db://shared-components/shared/common-components/notice/scripts/notice-cmp";
 
-const { BrowserDomUtils } = gc;
+const { BrowserDomUtils, AppTypes } = gc;
 
 @ccclass()
 export class NoticeDirectCmp extends NoticeCmp {
+    appType: number = 0;
+
+    setAppType(appType: number) {
+        this.appType = appType;
+    }
+
     setData(data: {
         title: string;
         message: string;
@@ -17,8 +23,22 @@ export class NoticeDirectCmp extends NoticeCmp {
         showBtnConfirmButton?: boolean;
         noticeInfo?: gc.Notices.NoticeInfo;
     }) {
-        const modifiedData = { ...data };
+        if (this.appType === AppTypes.MobileDirect) {
+            this.setDirectData(data);
+        } else {
+            super.setData(data);
+        }
+    }
 
+    private setDirectData(data: {
+        title: string;
+        message: string;
+        type: NoticeType;
+        onClose: () => void;
+        showBtnConfirmButton?: boolean;
+        noticeInfo?: gc.Notices.NoticeInfo;
+    }) {
+        const modifiedData = { ...data };
         if (this.isBlockingNotice(modifiedData.noticeInfo)) {
             this.disableBackgroundClick();
         }
