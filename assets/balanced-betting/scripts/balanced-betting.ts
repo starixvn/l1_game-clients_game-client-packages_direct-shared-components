@@ -21,7 +21,7 @@ export class BalancedBetting extends ObserverComponent {
 
     onLoad() {
         super.onLoad();
-        this.nodeBetItems.children.forEach((choice) => {
+        this.nodeBetItems?.children.forEach((choice) => {
             this.betItems.push(choice.getComponent(BetItem));
         });
     }

@@ -1,6 +1,9 @@
-import { _decorator, instantiate } from "cc";
+import { _decorator, instantiate, Component } from "cc";
 import { BetDetailTable, BetDetailTableType } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-table";
 import Observer from "observer";
+import { BaseBetDetailSummaryTable } from "./bet-detail-balanced-betting-summary";
+import { BetDirectDetailLogTable } from "./bet-detail-log-table";
+
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
 
@@ -12,13 +15,15 @@ export interface BetDetaiBalancedBettingType extends BetDetailTableType {
 export class BetDetailBalancedBettingTable extends BetDetailTable {
     showBetDetail(data: BetDetaiBalancedBettingType) {
         const { roundBettingInfo, resultContentPrefab, betDetailSummaryPrefab, logDetailItemPrefab, betDetailLogTablePrefab } = data;
-
         const betDetailLogTable = instantiate(betDetailLogTablePrefab);
-        //betDetailLogTable.getComponent(BetDetailLogTable).showBetDetail(logDetailItemPrefab, roundBettingInfo);
+        const logTableComponent = betDetailLogTable.getComponent(BetDirectDetailLogTable);
+        if (logTableComponent) {
+            logTableComponent.showBetDetail(logDetailItemPrefab, roundBettingInfo);
+        }
         this.nodeBetDetailLogTablePrefab.addChild(betDetailLogTable);
 
         const betDetailSummaryTable = instantiate(betDetailSummaryPrefab);
-        //betDetailSummaryTable?.getComponent(BaseBetDetailSummaryTable).renderResult(roundBettingInfo, resultContentPrefab);
+        betDetailSummaryTable?.getComponent(BaseBetDetailSummaryTable).renderResult(roundBettingInfo, resultContentPrefab);
         this.nodeBetDetailSummaryTable?.addChild(betDetailSummaryTable);
     }
 }
