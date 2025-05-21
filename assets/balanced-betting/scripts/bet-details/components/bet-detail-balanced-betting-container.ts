@@ -1,16 +1,17 @@
 import { _decorator, Node, Prefab } from "cc";
-
 import { NodeContainer } from "db://shared-components/shared/common-components/node-container/node-container";
 import Observer from "observer";
+
 import { RoundBalancedBettingStore } from "../round-balanced-betting-store";
 import { BetDetailBalancedBettingTable } from "./bet-detail-balanced-betting-table";
+
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
 
 @ccclass
 export class BetDetailBalancedBettingContainer extends NodeContainer {
     @property(Prefab)
-    betdetailSummaryTablePrefab: Prefab = null;
+    betDetailSummaryTablePrefab: Prefab = null;
 
     @property(Prefab)
     resultContentPrefab: Prefab = null;
@@ -18,14 +19,14 @@ export class BetDetailBalancedBettingContainer extends NodeContainer {
     @property(Prefab)
     betDetailLogTablePrefab: Prefab = null;
 
-    wrapperNode: Node = null;
-    table: BetDetailBalancedBettingTable = null;
-
     @property
     supportChoices = "big,small";
 
     @property(Prefab)
     logDetailItemPrefab: Prefab = null;
+
+    wrapperNode: Node = null;
+    table: BetDetailBalancedBettingTable = null;
 
     private betChoices: string[];
 
@@ -49,7 +50,7 @@ export class BetDetailBalancedBettingContainer extends NodeContainer {
         this.table.showBetDetail({
             roundBettingInfo: info,
             resultContentPrefab: this.resultContentPrefab,
-            betDetailSummaryPrefab: this.betdetailSummaryTablePrefab,
+            betDetailSummaryPrefab: this.betDetailSummaryTablePrefab,
             betDetailLogTablePrefab: this.betDetailLogTablePrefab,
             logDetailItemPrefab: this.logDetailItemPrefab,
             model: null,
