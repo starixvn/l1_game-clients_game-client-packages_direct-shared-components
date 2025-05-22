@@ -1,7 +1,10 @@
 import { _decorator, Label, Node, Prefab, Sprite, SpriteFrame } from "cc";
 import { BetDetailLogTable } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-table";
+import { BalancedBetDetailLogItem } from './balanced-bet-detail-log-item';
 
 const { ccclass, property } = _decorator;
+
+
 
 interface BetRecord {
     refund: number;
@@ -27,7 +30,7 @@ interface BetRecord {
 }
 
 @ccclass()
-export class DirectBetDetailLogTable extends BetDetailLogTable {
+export class BalancedBetLogTable extends BetDetailLogTable {
     @property(SpriteFrame)
     activeSpriteFrame: SpriteFrame = null;
 
@@ -68,18 +71,16 @@ export class DirectBetDetailLogTable extends BetDetailLogTable {
 
         const { betLogsChoice, total } = model;
 
-        const betLogsChoiceData = this.filterBetsByChoice(betLogsChoice, choice);
-        console.log("---betLogsChoiceData", betLogsChoiceData);
+        const betLogsChoiceData = betLogsChoice[this.getChoiceData(choice)] || [];
 
-        const data = total[choice === "big" ? "0" : "1"];
-        this.lblStakeTotal && (this.lblStakeTotal.string = data.betAmount.toString());
-        this.lblRefundTotal && (this.lblRefundTotal.string = data.refund.toString());
+        this.setStakeTotal(total, choice);
+        this.setRefundTotal(total, choice);
 
         betLogsChoiceData &&
             betLogsChoiceData.forEach((betDetailsLog, index) => {
                 this.body.addChild(
                     this.buildBodyRow(bodyItemPrefab, {
-                        betDetailsLog: betDetailsLog[0],
+                        betDetailsLog: betDetailsLog,
                         index,
                         odds: {},
                         settlementResult: {},
@@ -89,6 +90,31 @@ export class DirectBetDetailLogTable extends BetDetailLogTable {
                     })
                 );
             });
+    }
+
+    getChoiceData(choice: string) {
+        return choice === "big" ? "0" : "1";
+    }    
+
+    setStakeTotal(data, choice: string) {
+        if(!this.lblStakeTotal) {
+            return;
+        }
+
+        const totalData =  data[this.getChoiceData(choice)];
+
+        this.lblStakeTotal.string = totalData?.betAmount.toString() || "0";
+        
+    }
+
+    setRefundTotal(data, choice: string) {
+        if(!this.lblRefundTotal) {
+            return;
+        }
+        const totalData = data[this.getChoiceData(choice)];
+
+        this.lblRefundTotal.string = totalData?.refund.toString() || "0"
+        
     }
 
     filterBetLogsChoice(data) {

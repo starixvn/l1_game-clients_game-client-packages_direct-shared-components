@@ -22,6 +22,7 @@ export class RoundBalancedBettingStore {
     }
 
     private _roundBettingInfo = null;
+    private _roundId = 0;
 
     set roundBettingInfo(roundBettingInfo: any) {
         this._roundBettingInfo = roundBettingInfo;
@@ -29,5 +30,13 @@ export class RoundBalancedBettingStore {
 
     get roundBettingInfo() {
         return this._roundBettingInfo;
+    }
+
+    set roundId(roundId: number) {
+        this._roundId = roundId;
+    }
+
+    get roundId() {
+        return this._roundId;
     }
 }

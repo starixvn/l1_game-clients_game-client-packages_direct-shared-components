@@ -14,9 +14,6 @@ export class BetDetailBalancedBettingContainer extends NodeContainer {
     betDetailSummaryTablePrefab: Prefab = null;
 
     @property(Prefab)
-    resultContentPrefab: Prefab = null;
-
-    @property(Prefab)
     betDetailLogTablePrefab: Prefab = null;
 
     @property
@@ -49,7 +46,7 @@ export class BetDetailBalancedBettingContainer extends NodeContainer {
 
         this.table.showBetDetail({
             roundBettingInfo: info,
-            resultContentPrefab: this.resultContentPrefab,
+            resultContentPrefab: null,
             betDetailSummaryPrefab: this.betDetailSummaryTablePrefab,
             betDetailLogTablePrefab: this.betDetailLogTablePrefab,
             logDetailItemPrefab: this.logDetailItemPrefab,

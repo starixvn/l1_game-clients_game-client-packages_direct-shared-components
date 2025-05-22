@@ -3,13 +3,16 @@ import { _decorator, Component, Label, Sprite, SpriteFrame } from "cc";
 import Observer from "observer";
 
 import { RoundBalancedBettingHandler } from "../round-balanced-betting-handler";
+import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
 const { DateTimeUtils } = gc;
-export class BaseBetDetailSummaryTable extends Component {
+
+export class BaseBetDetailSummaryTable extends ObserverComponent {
     renderResult(roundBettingInfo) {}
 }
+
 @ccclass
 export class BetDetailBalancedBettingSummary extends BaseBetDetailSummaryTable {
     @property(Label)
@@ -50,14 +53,17 @@ export class BetDetailBalancedBettingSummary extends BaseBetDetailSummaryTable {
     }
 
     @handle(RoundBalancedBettingHandler)
-    handleNextBet(event: Event) {
-        const round = this.roundId++;
-        return round;
+    handleNextRound(roundId: number) {
+        return roundId;
     }
 
-    @handle(RoundBalancedBettingHandler)
-    handlePreviousBet(event: Event) {
-        const round = this.roundId--;
-        return round;
+    onClickNextRound(event: Event) {
+        this.roundId = this.roundId + 1;
+        this.handleNextRound(this.roundId);
+    }
+
+    onClickPreviousRound(event: Event) {
+        this.roundId = this.roundId - 1;
+        this.handleNextRound(this.roundId);
     }
 }
