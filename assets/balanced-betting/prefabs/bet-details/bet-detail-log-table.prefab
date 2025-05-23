@@ -77,7 +77,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "node-bet-nav",
+    "_name": "node-choice-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -492,7 +492,7 @@
     },
     "component": "",
     "_componentId": "8205cFZMQhFT6XWW0uCbvmG",
-    "handler": "handleBetNav",
+    "handler": "onClickBetChoice",
     "customEventData": "big"
   },
   {
@@ -865,7 +865,7 @@
     },
     "component": "",
     "_componentId": "8205cFZMQhFT6XWW0uCbvmG",
-    "handler": "handleBetNav",
+    "handler": "onClickBetChoice",
     "customEventData": "small"
   },
   {
@@ -4703,7 +4703,7 @@
       "__uuid__": "ad50d406-deed-4cb2-99e2-fcfebe311494@fce32",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "nodeBetNav": {
+    "nodeChoiceContainer": {
       "__id__": 2
     },
     "lblStakeTotal": {

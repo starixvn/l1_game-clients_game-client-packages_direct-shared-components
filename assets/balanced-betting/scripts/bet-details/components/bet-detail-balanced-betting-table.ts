@@ -2,7 +2,7 @@ import { _decorator, instantiate } from "cc";
 import { BetDetailTable, BetDetailTableType } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-table";
 import Observer from "observer";
 
-import { BaseBetDetailSummaryTable } from "./bet-detail-balanced-betting-summary";
+import { BetDetailBalancedBettingSummary } from "./bet-detail-balanced-betting-summary";
 import { BalancedBetLogTable } from "./balanced-bet-log-table";
 
 const { ccclass, property } = _decorator;
@@ -25,7 +25,7 @@ export class BetDetailBalancedBettingTable extends BetDetailTable {
         this.nodeBetDetailLogTablePrefab.addChild(betDetailLogTable);
 
         const betDetailSummaryTable = instantiate(betDetailSummaryPrefab);
-        betDetailSummaryTable?.getComponent(BaseBetDetailSummaryTable).renderResult(roundBettingInfo);
+        betDetailSummaryTable?.getComponent(BetDetailBalancedBettingSummary).renderResult(roundBettingInfo);
         this.nodeBetDetailSummaryTable?.addChild(betDetailSummaryTable);
     }
 

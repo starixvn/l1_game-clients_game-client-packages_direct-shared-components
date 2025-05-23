@@ -1,36 +1,13 @@
 import { _decorator, Label, Node, Prefab, Sprite, SpriteFrame } from "cc";
 import { BetDetailLogTable } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-table";
-import { BalancedBetDetailLogItem } from './balanced-bet-detail-log-item';
 
 const { ccclass, property } = _decorator;
 
-
-
-interface BetRecord {
-    refund: number;
-    baseRefund: number;
-    win: boolean;
-    betwin: number;
-    baseBetWin: number;
-    totalWin: number;
-    baseTotalWin: number;
-    paid: boolean;
-    uid: string;
-    name: string;
-    time: string;
-    choice: string;
-    amount: number;
-    baseAmount: number;
-    roundId: number;
-    siteId: string;
-    currency: string;
-    rate: number;
-    operatorId: string;
-    playerId: string;
-}
-
 @ccclass()
 export class BalancedBetLogTable extends BetDetailLogTable {
+    @property({ type: String, override: true, visible: false })
+    refundChoices = "";
+
     @property(SpriteFrame)
     activeSpriteFrame: SpriteFrame = null;
 
@@ -38,7 +15,7 @@ export class BalancedBetLogTable extends BetDetailLogTable {
     inactiveSpriteFrame: SpriteFrame = null;
 
     @property(Node)
-    nodeBetNav: Node = null;
+    nodeChoiceContainer: Node = null;
 
     @property(Label)
     lblStakeTotal: Label = null;
@@ -46,24 +23,24 @@ export class BalancedBetLogTable extends BetDetailLogTable {
     @property(Label)
     lblRefundTotal: Label = null;
 
-    private defaultBetChoice = "big";
+    protected defaultBetChoice = "big";
     private bodyItemPrefab: any;
-    private model: any;
+    private roundBettingInfo: any;
 
-    handleBetNav(event: Event, customEventData: string) {
-        this.nodeBetNav.children.forEach((child) => {
+    onClickBetChoice(event: Event, customEventData: string) {
+        this.nodeChoiceContainer.children.forEach((child) => {
             child.getComponent(Sprite).spriteFrame = this.inactiveSpriteFrame;
         });
 
-        const activeNode = this.nodeBetNav.getChildByName(`btn-${customEventData}`);
+        const activeNode = this.nodeChoiceContainer.getChildByName(`btn-${customEventData}`);
         activeNode.getComponent(Sprite).spriteFrame = this.activeSpriteFrame;
-        this.loadBetLogsChoice(this.bodyItemPrefab, this.model, customEventData);
+        this.loadBetLogsChoice(this.bodyItemPrefab, this.roundBettingInfo, customEventData);
     }
 
-    showBetDetail(bodyItemPrefab: Prefab, model) {
+    showBetDetail(bodyItemPrefab: Prefab, roundBettingInfo) {
         this.bodyItemPrefab = bodyItemPrefab;
-        this.model = model;
-        this.loadBetLogsChoice(this.bodyItemPrefab, this.model, this.defaultBetChoice);
+        this.roundBettingInfo = roundBettingInfo;
+        this.loadBetLogsChoice(this.bodyItemPrefab, this.roundBettingInfo, this.defaultBetChoice);
     }
 
     loadBetLogsChoice(bodyItemPrefab: Prefab, model, choice: string) {
@@ -92,36 +69,26 @@ export class BalancedBetLogTable extends BetDetailLogTable {
             });
     }
 
-    getChoiceData(choice: string) {
-        return choice === "big" ? "0" : "1";
-    }    
+    getChoiceData(choice: string): number {
+        return 0; // override in child class
+    }
 
-    setStakeTotal(data, choice: string) {
-        if(!this.lblStakeTotal) {
+    setStakeTotal(total, choice: string) {
+        if (!this.lblStakeTotal) {
             return;
         }
 
-        const totalData =  data[this.getChoiceData(choice)];
+        const totalData = total[this.getChoiceData(choice)];
 
         this.lblStakeTotal.string = totalData?.betAmount.toString() || "0";
-        
     }
 
-    setRefundTotal(data, choice: string) {
-        if(!this.lblRefundTotal) {
+    setRefundTotal(total, choice: string) {
+        if (!this.lblRefundTotal) {
             return;
         }
-        const totalData = data[this.getChoiceData(choice)];
+        const totalData = total[this.getChoiceData(choice)];
 
-        this.lblRefundTotal.string = totalData?.refund.toString() || "0"
-        
-    }
-
-    filterBetLogsChoice(data) {
-        return data.filter((item) => item !== undefined);
-    }
-
-    filterBetsByChoice(bets: BetRecord[], choice: string): BetRecord[] {
-        return bets.filter((bet) => bet[0].choice === choice);
+        this.lblRefundTotal.string = totalData?.refund.toString() || "0";
     }
 }
