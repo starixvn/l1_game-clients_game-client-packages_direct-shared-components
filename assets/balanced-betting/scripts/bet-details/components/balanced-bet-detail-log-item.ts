@@ -1,8 +1,12 @@
 import gc from "@sg/game-client-base";
 import { _decorator, Label } from "cc";
-import { BaseBetDetailLogItem, BetDetailLogItemType } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-item";
+import {
+    BaseBetDetailLogItem,
+    BetDetailLogItemType,
+} from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-item";
 import Observer from "observer";
 import { GameRoundBetDetailsLog } from "../types/balanced-betting.types";
+import { shortenName } from "../../../../../../shared-components/assets/shared/utils/utils";
 
 const { ccclass, property } = _decorator;
 const { observer, render } = Observer;
@@ -29,15 +33,17 @@ export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
 
     @render(Player.MainPlayerStore, (store) => store.name)
     renderResult(name: string) {
-        this.nodeBackground.active = this.playerName === name;
+        const isLoginUser = this.playerName === name;
+        this.nodeBackground.active = isLoginUser;
+        this.lblUser && (this.lblUser.string = isLoginUser ? name : shortenName(name));
     }
 
     setData(data: BetDetailLogItemType) {
         const { betDetailsLog } = data;
         const { time, name, refund, amount } = betDetailsLog as GameRoundBetDetailsLog;
+
         this.playerName = name;
         this.lblTime && (this.lblTime.string = `${DateTimeUtils.getString12HourByTime(time)}`);
-        this.lblUser && (this.lblUser.string = name);
         this.lblRefund && (this.lblRefund.string = refund.toString());
         this.lblStake && (this.lblStake.string = amount.toString());
     }
