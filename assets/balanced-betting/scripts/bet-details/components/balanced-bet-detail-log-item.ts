@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Label } from "cc";
+import { _decorator, Label, Node } from "cc";
 import {
     BaseBetDetailLogItem,
     BetDetailLogItemType,
@@ -26,21 +26,35 @@ export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
     @property(Label)
     lblRefund: Label = null;
 
+    @property(Node)
+    nodeHighlight: Node = null;
+
     @property({ type: Label, override: true, visible: false })
     lblWin: Label = null;
+
+    @property({ type: Label, override: true, visible: false })
+    lblOdds: Label = null;
+
+    @property({ type: Label, override: true, visible: false })
+    lblAmount: Label = null;
+
+    @property({ type: Label, override: true, visible: false })
+    lblChoice: Label = null;
 
     private playerName = "";
 
     @render(Player.MainPlayerStore, (store) => store.name)
     renderResult(name: string) {
         const isLoginUser = this.playerName === name;
-        this.nodeBackground.active = isLoginUser;
+        this.nodeHighlight.active = isLoginUser;
         this.lblUser && (this.lblUser.string = isLoginUser ? name : shortenName(name));
     }
 
     setData(data: BetDetailLogItemType) {
-        const { betDetailsLog } = data;
+        const { betDetailsLog, index } = data;
         const { time, name, refund, amount } = betDetailsLog as GameRoundBetDetailsLog;
+
+        this.nodeBackground.active = +index % 2 > 0;
 
         this.playerName = name;
         this.lblTime && (this.lblTime.string = `${DateTimeUtils.getString12HourByTime(time)}`);
