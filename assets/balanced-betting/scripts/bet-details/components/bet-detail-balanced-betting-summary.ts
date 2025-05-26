@@ -27,7 +27,7 @@ export class BetDetailBalancedBettingSummary extends ObserverComponent {
 
         this.roundId = id;
         this.lblRound.string = id;
-        this.lblDate && (this.lblDate.string = `${DateTimeUtils.getStringDate1(time)} ${DateTimeUtils.getString12HourByTime(time)}`);
+        this.lblDate && (this.lblDate.string = DateTimeUtils.getStringDateByTime(time));
     }
 
     @handle(RoundBalancedBettingHandler)

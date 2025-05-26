@@ -57,7 +57,7 @@ export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
         this.nodeBackground.active = +index % 2 > 0;
 
         this.playerName = name;
-        this.lblTime && (this.lblTime.string = `${DateTimeUtils.getString12HourByTime(time)}`);
+        this.lblTime && (this.lblTime.string = DateTimeUtils.getStringHourByTime(time));
         this.lblRefund && (this.lblRefund.string = refund.toString());
         this.lblStake && (this.lblStake.string = amount.toString());
     }
