@@ -10,7 +10,7 @@ import { shortenName } from "../../../../../../shared-components/assets/shared/u
 
 const { ccclass, property } = _decorator;
 const { observer, render } = Observer;
-const { DateTimeUtils, Player } = gc;
+const { DateTimeUtils, Player, FormatUtils } = gc;
 
 @ccclass()
 export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
@@ -58,7 +58,7 @@ export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
 
         this.playerName = name;
         this.lblTime && (this.lblTime.string = DateTimeUtils.getStringHourByTime(time));
-        this.lblRefund && (this.lblRefund.string = refund.toString());
-        this.lblStake && (this.lblStake.string = amount.toString());
+        this.lblRefund && (this.lblRefund.string = FormatUtils.numberWithCommas(refund, 2));
+        this.lblStake && (this.lblStake.string = FormatUtils.numberWithCommas(amount, 2));
     }
 }
