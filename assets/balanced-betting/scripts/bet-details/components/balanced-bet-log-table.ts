@@ -5,7 +5,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass()
 export class BalancedBetLogTable extends BetDetailLogTable {
-    @property({ type: String, override: true, visible: false })
+    @property({ override: true, visible: false })
     refundChoices = "";
 
     @property(SpriteFrame)

@@ -14,7 +14,6 @@ export class RoundBalancedBettingHandler implements gc.Shared.IMultipleHandlers 
     }
 
     handle(roundId: number) {
-        console.log("------RoundId", roundId);
         this.roundBettingStore.roundId = roundId;
         this.connectionStore.send(GameClientEmitMessage.RoundBetDetails.eventName, { roundId });
     }
