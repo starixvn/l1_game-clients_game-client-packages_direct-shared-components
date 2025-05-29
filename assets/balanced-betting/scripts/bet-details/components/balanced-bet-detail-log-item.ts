@@ -47,7 +47,7 @@ export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
     renderResult(name: string) {
         const isLoginUser = this.playerName === name;
         this.nodeHighlight.active = isLoginUser;
-        this.lblUser && (this.lblUser.string = isLoginUser ? name : shortenName(name));
+        this.lblUser && (this.lblUser.string = isLoginUser ? name : shortenName(this.playerName));
     }
 
     setData(data: BetDetailLogItemType) {

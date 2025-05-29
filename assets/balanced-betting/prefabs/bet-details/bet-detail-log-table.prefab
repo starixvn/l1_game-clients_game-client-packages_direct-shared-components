@@ -1479,12 +1479,12 @@
       "a": 255
     },
     "_string": "Time",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 23,
     "_fontSize": 23,
     "_fontFamily": "Arial",
-    "_lineHeight": 46,
+    "_lineHeight": 23,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -1560,8 +1560,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 58.91503906250006,
-      "height": 57.96
+      "width": 58.9150390625,
+      "height": 28.98
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1648,7 +1648,7 @@
     },
     "_alignFlags": 40,
     "_target": null,
-    "_left": 0.07004101045800265,
+    "_left": 0.07004101045800273,
     "_right": 0.8588055607225529,
     "_top": 0,
     "_bottom": 0,
@@ -1721,7 +1721,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -99.1047216796874,
+      "x": -99.10472167968737,
       "y": 0,
       "z": 0
     },
@@ -1771,12 +1771,12 @@
       "a": 255
     },
     "_string": "Nickname",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 23,
     "_fontSize": 23,
     "_fontFamily": "Arial",
-    "_lineHeight": 46,
+    "_lineHeight": 23,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -1852,8 +1852,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 117.89746093750028,
-      "height": 57.96
+      "width": 117.8974609375,
+      "height": 28.98
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1940,8 +1940,8 @@
     },
     "_alignFlags": 40,
     "_target": null,
-    "_left": 0.3091141882265247,
-    "_right": 0.5484975739262528,
+    "_left": 3.6047142316292886,
+    "_right": 3.844097617329017,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -2063,12 +2063,12 @@
       "a": 255
     },
     "_string": "Stake",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 23,
     "_fontSize": 23,
     "_fontFamily": "Arial",
-    "_lineHeight": 46,
+    "_lineHeight": 23,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -2144,8 +2144,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 63.8676757812502,
-      "height": 57.96
+      "width": 63.86767578125,
+      "height": 28.98
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2232,8 +2232,8 @@
     },
     "_alignFlags": 40,
     "_target": null,
-    "_left": 0.6279905339485203,
-    "_right": 0.29487459191953497,
+    "_left": 0.6279905339485207,
+    "_right": 0.2948745919195353,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -2355,12 +2355,12 @@
       "a": 255
     },
     "_string": "Refund",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 23,
     "_fontSize": 23,
     "_fontFamily": "Arial",
-    "_lineHeight": 46,
+    "_lineHeight": 23,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -2436,8 +2436,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 84.36328125000028,
-      "height": 57.96
+      "width": 84.36328125,
+      "height": 28.98
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2524,8 +2524,8 @@
     },
     "_alignFlags": 40,
     "_target": null,
-    "_left": 0.8205390813707728,
-    "_right": 0.07757289779589358,
+    "_left": 0.8205390813707735,
+    "_right": 0.07757289779589407,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
