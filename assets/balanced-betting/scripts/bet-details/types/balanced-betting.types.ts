@@ -5,7 +5,8 @@ export type GameRoundBetDetailsLog = gc.BetHistory.DynamicObject<object> & {
     name: string;
     refund: number;
     amount: number;
-}
+    rate: number;
+};
 
 export interface BetRecord extends gc.BetHistory.DynamicObject<object> {
     refund: number;
@@ -29,4 +30,4 @@ export interface BetRecord extends gc.BetHistory.DynamicObject<object> {
     operatorId: string;
     playerId: string;
     [key: string]: any;
-} 
+}
