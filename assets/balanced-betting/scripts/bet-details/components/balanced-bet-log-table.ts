@@ -1,7 +1,34 @@
 import { _decorator, Label, Node, Prefab, Sprite, SpriteFrame } from "cc";
 import { BetDetailLogTable } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-table";
+import gc from "@sg/game-client-base";
+import Observer from "observer";
 
 const { ccclass, property } = _decorator;
+const { observer, render } = Observer;
+const { FormatUtils, Shared, Player } = gc;
+
+interface TotalData {
+    betAmount?: number;
+    refund?: number;
+}
+
+interface BetLogsChoice {
+    [key: string]: any[];
+}
+
+interface BetTotal {
+    [key: string]: TotalData;
+}
+
+interface RoundBettingInfo extends gc.BetHistory.BetDetailModel {
+    betLogsChoice: BetLogsChoice;
+    total: BetTotal;
+    playerRate: number;
+    time: string;
+    result: gc.BetHistory.DynamicObject<object>;
+    settlementResult: gc.BetHistory.DynamicObject<boolean>;
+    id: number;
+}
 
 @ccclass()
 export class BalancedBetLogTable extends BetDetailLogTable {
@@ -24,71 +51,69 @@ export class BalancedBetLogTable extends BetDetailLogTable {
     lblRefundTotal: Label = null;
 
     protected defaultBetChoice = "big";
-    private bodyItemPrefab: any;
-    private roundBettingInfo: any;
+    private bodyItemPrefab: Prefab;
+    private roundBettingInfo: RoundBettingInfo;
 
     onClickBetChoice(event: Event, customEventData: string) {
+        // Update button visuals
         this.nodeChoiceContainer.children.forEach((child) => {
             child.getComponent(Sprite).spriteFrame = this.inactiveSpriteFrame;
         });
 
         const activeNode = this.nodeChoiceContainer.getChildByName(`btn-${customEventData}`);
         activeNode.getComponent(Sprite).spriteFrame = this.activeSpriteFrame;
+
+        // Load bet logs for selected choice
         this.loadBetLogsChoice(this.bodyItemPrefab, this.roundBettingInfo, customEventData);
     }
 
-    showBetDetail(bodyItemPrefab: Prefab, roundBettingInfo) {
+    showBetDetail(bodyItemPrefab: Prefab, model: gc.BetHistory.BetDetailModel) {
         this.bodyItemPrefab = bodyItemPrefab;
-        this.roundBettingInfo = roundBettingInfo;
+        this.roundBettingInfo = model as RoundBettingInfo;
         this.loadBetLogsChoice(this.bodyItemPrefab, this.roundBettingInfo, this.defaultBetChoice);
     }
 
-    loadBetLogsChoice(bodyItemPrefab: Prefab, model, choice: string) {
+    private loadBetLogsChoice(bodyItemPrefab: Prefab, model: RoundBettingInfo, choice: string) {
         this.body.removeAllChildren();
 
-        const { betLogsChoice, total } = model;
+        const { betLogsChoice, total, playerRate } = model;
+        const choiceIndex = this.getChoiceData(choice);
+        const betLogsChoiceData = betLogsChoice[choiceIndex] || [];
 
-        const betLogsChoiceData = betLogsChoice[this.getChoiceData(choice)] || [];
+        // Update total labels with player rate
+        this.updateTotalLabel(this.lblStakeTotal, total, choice, "betAmount", playerRate);
+        this.updateTotalLabel(this.lblRefundTotal, total, choice, "refund", playerRate);
 
-        this.setStakeTotal(total, choice);
-        this.setRefundTotal(total, choice);
-
-        betLogsChoiceData &&
-            betLogsChoiceData.forEach((betDetailsLog, index) => {
-                this.body.addChild(
-                    this.buildBodyRow(bodyItemPrefab, {
-                        betDetailsLog: betDetailsLog,
-                        index,
-                        odds: {},
-                        settlementResult: {},
-                        result: {},
-                        freeBet: false,
-                        fractionalOddsFormat: false,
-                    })
-                );
-            });
+        // Create bet log rows
+        betLogsChoiceData.forEach((betDetailsLog, index) => {
+            this.body.addChild(
+                this.buildBodyRow(bodyItemPrefab, {
+                    betDetailsLog,
+                    index,
+                    odds: {},
+                    settlementResult: {},
+                    result: {},
+                    freeBet: false,
+                    fractionalOddsFormat: false,
+                })
+            );
+        });
     }
 
-    getChoiceData(choice: string): number {
-        return 0; // override in child class
+    protected getChoiceData(choice: string): number {
+        return 0; // Override in child class to map choice to index
     }
 
-    setStakeTotal(total, choice: string) {
-        if (!this.lblStakeTotal) {
-            return;
-        }
+    private updateTotalLabel(label: Label, total: BetTotal, choice: string, field: keyof TotalData, playerRate: number) {
+        if (!label) return;
 
-        const totalData = total[this.getChoiceData(choice)];
+        const choiceIndex = this.getChoiceData(choice);
+        const totalData = total[choiceIndex];
+        const value = totalData?.[field] || 0;
 
-        this.lblStakeTotal.string = totalData?.betAmount.toString() || "0";
-    }
+        // Convert value using player rate
+        const displayValue = Shared.utils.NumberUtils.getValueByCurrency(value, playerRate);
 
-    setRefundTotal(total, choice: string) {
-        if (!this.lblRefundTotal) {
-            return;
-        }
-        const totalData = total[this.getChoiceData(choice)];
-
-        this.lblRefundTotal.string = totalData?.refund.toString() || "0";
+        label.string = FormatUtils.numberWithCommas(displayValue, 2);
     }
 }
