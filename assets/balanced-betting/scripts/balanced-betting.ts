@@ -32,7 +32,7 @@ export class BalancedBetting extends ObserverComponent {
         tween(this.noticeBalancedBetting)
             .to(0.3, { scale: v3(1, 1, 1) }, { easing: "sineOut" })
             .start();
-        this.balanceBet();
+        this.balanceBet(true);
     }
 
     hideNotice() {
@@ -46,10 +46,10 @@ export class BalancedBetting extends ObserverComponent {
         this.totalBets = totalBets;
     }
 
-    balanceBet() {
+    balanceBet(hasAnimation = true) {
         this.assignTotalBets(this.totalBets);
         const totalBets = values(this.totalBets);
         const balancedBetAmount = Math.min(...[totalBets[0] ?? 0, totalBets[1] ?? 0]);
-        this.betItems.forEach((item) => (item as BalancedPoolBetItem).balanceBet(balancedBetAmount));
+        this.betItems.forEach((item) => (item as BalancedPoolBetItem).balanceBet(balancedBetAmount, hasAnimation));
     }
 }
