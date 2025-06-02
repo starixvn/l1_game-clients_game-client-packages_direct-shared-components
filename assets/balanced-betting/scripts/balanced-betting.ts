@@ -21,18 +21,10 @@ export class BalancedBetting extends ObserverComponent {
 
     onLoad() {
         super.onLoad();
+        this.noticeBalancedBetting.scale = v3(0, 0, 0);
         this.nodeBetItems?.children.forEach((choice) => {
             this.betItems.push(choice.getComponent(BetItem));
         });
-    }
-
-    onEnable() {
-        this.showNotice();
-        this.balanceBet(true);
-    }
-
-    protected onDisable(): void {
-        this.hideNotice();
     }
 
     showNotice() {
@@ -40,6 +32,7 @@ export class BalancedBetting extends ObserverComponent {
         tween(this.noticeBalancedBetting)
             .to(0.3, { scale: v3(1, 1, 1) }, { easing: "sineOut" })
             .start();
+        this.balanceBet();
     }
 
     hideNotice() {
@@ -48,14 +41,15 @@ export class BalancedBetting extends ObserverComponent {
             .start();
     }
 
-    balanceBet(animated: boolean) {
-        const totalBets = values(this.totalBets);
-        const balancedBetAmount = Math.min(...[totalBets[0] ?? 0, totalBets[1] ?? 0]);
-        this.betItems.forEach((item) => (item as BalancedPoolBetItem).balanceBet(balancedBetAmount));
-    }
-
     @render(gc.Rounds.RoundStore, (store) => store.totalBets)
     assignTotalBets(totalBets: gc.GameServiceMessage.TotalBets) {
         this.totalBets = totalBets;
+    }
+
+    balanceBet() {
+        this.assignTotalBets(this.totalBets);
+        const totalBets = values(this.totalBets);
+        const balancedBetAmount = Math.min(...[totalBets[0] ?? 0, totalBets[1] ?? 0]);
+        this.betItems.forEach((item) => (item as BalancedPoolBetItem).balanceBet(balancedBetAmount));
     }
 }
