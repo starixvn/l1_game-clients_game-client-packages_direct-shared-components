@@ -1,9 +1,9 @@
 import gc from "@sg/game-client-base";
 import { _decorator } from "cc";
-import { NoticeContainer } from "db://shared-components/shared/common-components/notice/scripts/notice-container";
-import { NoticeDirectCmp } from "./notice-direct-cmp";
 import { GameGuideUtils } from "db://shared-components/game/game-guide/scripts/utils/game-guide-utils";
+import { NoticeContainer } from "db://shared-components/shared/common-components/notice/scripts/notice-container";
 import Observer from "observer";
+import { NoticeDirectCmp } from "./notice-direct-cmp";
 
 const { ccclass } = _decorator;
 
@@ -15,7 +15,7 @@ const { Auth } = gc;
 export class NoticeDirectContainer extends NoticeContainer {
     noticeCmp: NoticeDirectCmp = null;
 
-    private appType: number = 0;
+    private appType = 0;
 
     @render(Auth.AuthStore, (store) => store.system)
     storeAppType(appType: number) {
