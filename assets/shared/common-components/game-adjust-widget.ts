@@ -9,7 +9,7 @@ const { ccclass, property } = _decorator;
 @ccclass("GameAdjustWidget")
 export class GameAdjustWidget extends Component {
     @property
-    value: number = -0.1;
+    value = -0.1;
 
     private gameWidget: Widget = null;
 
@@ -33,7 +33,9 @@ export class GameAdjustWidget extends Component {
     }
 
     protected updateDisplay(): void {
-        if (!this.gameWidget) return;
+        if (!this.gameWidget) {
+            return;
+        }
         this.gameWidget.verticalCenter = this.calculateVerticalCenter();
     }
 

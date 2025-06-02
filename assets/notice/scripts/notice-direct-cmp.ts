@@ -9,7 +9,7 @@ const { BrowserDomUtils, AppTypes } = gc;
 
 @ccclass()
 export class NoticeDirectCmp extends NoticeCmp {
-    appType: number = 0;
+    appType = 0;
 
     setAppType(appType: number) {
         this.appType = appType;

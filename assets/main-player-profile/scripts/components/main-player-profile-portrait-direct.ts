@@ -17,14 +17,12 @@ export default class MainPlayerProfilePortraitDirect extends MainPlayerProfile {
     activeUserScoinWallet(enableFreeBet: boolean) {
         super.activeUserScoinWallet(enableFreeBet);
         this.enableFreeBet = enableFreeBet;
-        //this.checkAndUpdateScoinWallet();
         this.disableScoinWallet();
     }
 
     setScoin(scoin: number) {
         this.scoin = scoin;
         super.setScoin(scoin);
-        // this.checkAndUpdateScoinWallet();
         this.disableScoinWallet();
     }
 

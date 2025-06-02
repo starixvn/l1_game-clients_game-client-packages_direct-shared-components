@@ -1,4 +1,3 @@
-import gc from "@sg/game-client-base";
 import { _decorator } from "cc";
 import { GuidePFContainer } from "db://shared-components/shared/common-components/provably-fair/guide-pf-container";
 import { IntroPFPopup } from "db://shared-components/shared/common-components/provably-fair/intro-pf-popup";

@@ -1,4 +1,4 @@
-import { _decorator, CCInteger } from "cc";
+import { _decorator } from "cc";
 import { ScoreboardBeadRoad } from "db://shared-components/game/scoreboards/scripts/components/scoreboard-bead-road";
 
 const { ccclass, property } = _decorator;
