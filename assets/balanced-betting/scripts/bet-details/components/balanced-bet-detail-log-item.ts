@@ -6,7 +6,7 @@ import {
 } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-item";
 import Observer from "observer";
 import { GameRoundBetDetailsLog } from "../types/balanced-betting.types";
-import { shortenName, getValueByCurrency } from "../../../../../../shared-components/assets/shared/utils/utils";
+import { shortenName } from "../../../../../../shared-components/assets/shared/utils/utils";
 
 const { ccclass, property } = _decorator;
 const { observer, render } = Observer;

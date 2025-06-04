@@ -7,7 +7,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass
 export class BalancedPoolBetItem extends BetItem {
-    private DURATION_BALANCED_BET = 1.5;
+    private readonly DURATION_BALANCED_BET = 1.5;
 
     public balanceBet(bet: number, hasAnimation = true) {
         if (this.lblTotalBet.string === "") {

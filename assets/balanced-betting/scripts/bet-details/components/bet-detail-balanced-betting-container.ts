@@ -34,7 +34,7 @@ export class BetDetailBalancedBettingContainer extends NodeContainer {
     @render(RoundBalancedBettingStore, (store) => store.roundBettingInfo, { fireImmediately: false })
     renderRoundInfo(roundBettingInfo: any) {
         const { time, result, settlementResult, id, total, playerRate } = roundBettingInfo;
-        let info = {
+        const info = {
             betLogsChoice: [],
             total: [],
             time: time,

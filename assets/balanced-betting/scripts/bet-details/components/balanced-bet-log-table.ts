@@ -105,7 +105,9 @@ export class BalancedBetLogTable extends BetDetailLogTable {
     }
 
     private updateTotalLabel(label: Label, total: BetTotal, choice: string, field: keyof TotalData, playerRate: number) {
-        if (!label) return;
+        if (!label) {
+            return;
+        }
 
         const choiceIndex = this.getChoiceData(choice);
         const totalData = total[choiceIndex];

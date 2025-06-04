@@ -17,7 +17,7 @@ export class BalancedBetting extends ObserverComponent {
     nodeBetItems: Node = null;
 
     private totalBets: { [choice: string]: number };
-    private betItems: BetItem[] = [];
+    private readonly betItems: BetItem[] = [];
 
     onLoad() {
         super.onLoad();
