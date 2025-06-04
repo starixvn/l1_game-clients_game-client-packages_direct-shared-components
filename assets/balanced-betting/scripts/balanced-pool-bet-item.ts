@@ -1,6 +1,7 @@
 import { _decorator } from "cc";
+import gc from "@sg/game-client-base";
 import BetItem from "db://shared-components/game/bets/scripts/components/bet-item";
-import { NumberUtils } from "db://shared-components/shared/utils/number-utils";
+import { AnimationUtils } from "db://shared-components/shared/utils";
 
 const { ccclass, property } = _decorator;
 
@@ -12,6 +13,11 @@ export class BalancedPoolBetItem extends BetItem {
         if (this.lblTotalBet.string === "") {
             return;
         }
-        NumberUtils.numberTo(this.lblTotalBet, bet, this.DURATION_BALANCED_BET, true, hasAnimation);
+
+        if (hasAnimation) {
+            AnimationUtils.floatToNumber({ label: this.lblTotalBet, amount: bet, duration: this.DURATION_BALANCED_BET });
+        } else {
+            this.lblTotalBet.string = gc.FormatUtils.numberWithCommas(bet, 2);
+        }
     }
 }
