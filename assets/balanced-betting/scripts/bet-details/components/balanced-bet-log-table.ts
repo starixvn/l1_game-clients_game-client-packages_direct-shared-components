@@ -54,7 +54,7 @@ export class BalancedBetLogTable extends BetDetailLogTable {
     private bodyItemPrefab: Prefab;
     private roundBettingInfo: RoundBettingInfo;
 
-    onClickBetChoice(event: Event, customEventData: string) {
+    private onClickBetChoice(event: Event, customEventData: string) {
         // Update button visuals
         this.nodeChoiceContainer.children.forEach((child) => {
             child.getComponent(Sprite).spriteFrame = this.inactiveSpriteFrame;
@@ -67,7 +67,7 @@ export class BalancedBetLogTable extends BetDetailLogTable {
         this.loadBetLogsChoice(this.bodyItemPrefab, this.roundBettingInfo, customEventData);
     }
 
-    showBetDetail(bodyItemPrefab: Prefab, model: gc.BetHistory.BetDetailModel) {
+    override showBetDetail(bodyItemPrefab: Prefab, model: gc.BetHistory.BetDetailModel) {
         this.bodyItemPrefab = bodyItemPrefab;
         this.roundBettingInfo = model as RoundBettingInfo;
         this.loadBetLogsChoice(this.bodyItemPrefab, this.roundBettingInfo, this.defaultBetChoice);
