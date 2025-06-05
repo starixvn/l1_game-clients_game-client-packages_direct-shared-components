@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "bet-detail-portrait-container",
+    "_name": "direct-bet-detail-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bet-detail-portrait-container",
+    "_name": "direct-bet-detail-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -139,21 +139,20 @@
       "__id__": 7
     },
     "prefab": {
-      "__uuid__": "25585b5f-e6ae-40fd-bf67-193e79db7e12",
+      "__uuid__": "a7659d18-9955-4a39-afbc-9702b1bf40de",
       "__expectedType__": "cc.Prefab"
     },
-    "betdetailSummaryTablePrefab": {
-      "__uuid__": "6c102212-9ed3-46b7-bc26-a223370393fd",
+    "betDetailSummaryTablePrefab": {
+      "__uuid__": "a8406e88-c1ff-4850-8bc9-15987da62275",
       "__expectedType__": "cc.Prefab"
     },
-    "resultContentPrefab": null,
     "betDetailLogTablePrefab": {
-      "__uuid__": "c9445cf1-9919-4c1d-ac88-80e7a7ae08b6",
+      "__uuid__": "8d80fb57-4eb3-4e33-8ca6-f32903a28f01",
       "__expectedType__": "cc.Prefab"
     },
     "supportChoices": "big,small",
     "logDetailItemPrefab": {
-      "__uuid__": "0536e76e-6528-451e-86ba-be7661dd0c9f",
+      "__uuid__": "2c2591eb-7486-49f4-b284-a490383851f0",
       "__expectedType__": "cc.Prefab"
     },
     "_id": ""
