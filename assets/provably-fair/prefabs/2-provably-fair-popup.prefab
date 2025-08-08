@@ -5713,7 +5713,7 @@
     "__prefab": {
       "__id__": 257
     },
-    "key": "Common.pf_header_server_seed_sha256",
+    "key": "Common.pf_header_server_seed_sha256_single",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -14960,7 +14960,7 @@
     "__prefab": {
       "__id__": 672
     },
-    "key": "Common.pf_ header_merge_client_seed",
+    "key": "Common.pf_ header_merge_client_seed_single",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -22942,6 +22942,7 @@
       "__id__": 2
     },
     "autoShowWhenEnable": true,
+    "playClickWhenHide": false,
     "_id": ""
   },
   {
