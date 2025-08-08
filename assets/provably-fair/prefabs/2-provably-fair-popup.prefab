@@ -5616,7 +5616,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 235.3125,
+      "width": 569.6015625,
       "height": 30.240000000000002
     },
     "_anchorPoint": {
@@ -5652,7 +5652,7 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Server Seed Sha256",
+    "_string": "Common.pf_header_server_seed_sha256_single",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
@@ -14863,7 +14863,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 218.09765625,
+      "width": 564.3984375,
       "height": 30.240000000000002
     },
     "_anchorPoint": {
@@ -14899,7 +14899,7 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Merge Client Seed",
+    "_string": "Common.pf_ Header_merge_client_seed_single",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
