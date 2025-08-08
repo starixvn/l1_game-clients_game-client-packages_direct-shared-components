@@ -5483,7 +5483,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 294.140625,
+      "width": 712.001953125,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -5519,7 +5519,7 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Server Seed Sha256",
+    "_string": "Common.pf_header_server_seed_sha256_single",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 30,
@@ -5580,7 +5580,7 @@
     "__prefab": {
       "__id__": 239
     },
-    "key": "Common.pf_header_server_seed_sha256",
+    "key": "Common.pf_header_server_seed_sha256_single",
     "format": 3,
     "prefix": "",
     "suffix": "",
