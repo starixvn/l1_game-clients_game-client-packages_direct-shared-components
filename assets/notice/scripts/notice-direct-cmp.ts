@@ -30,7 +30,7 @@ export class NoticeDirectCmp extends NoticeCmp {
         }
     }
 
-    private setDirectData(data: {
+    protected setDirectData(data: {
         title: string;
         message: string;
         type: NoticeType;
