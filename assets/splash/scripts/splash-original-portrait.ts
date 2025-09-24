@@ -11,21 +11,6 @@ const { Auth, AppTypes } = gc;
 @ccclass
 @observer
 export default class SplashOriginalPortrait extends SplashComponentBase {
-    @property({ type: Node, override: true, visible: false })
-    signNameContainer: Node = null;
-
-    @property({ type: Node, override: true, visible: false })
-    containerCustomize: Node = null;
-
-    @property({ type: Prefab, override: true, visible: false })
-    prefabCustomize: Prefab = null;
-
-    @property({ type: Prefab, override: true, visible: false })
-    prefabLogo: Prefab = null;
-
-    @property({ type: Node, override: true, visible: false })
-    nodeLogoContainer: Node = null;
-
     @property(ProgressBar)
     progressBar: ProgressBar = null;
 
@@ -44,16 +29,10 @@ export default class SplashOriginalPortrait extends SplashComponentBase {
         }
     }
 
-    override get sceneName() {
-        if (this.system === AppTypes.MobileDirect) {
-            return "direct-game";
+    override updateProgressBar(progress: number): void {
+        super.updateProgressBar(progress);
+        if (this.progressBar) {
+            this.progressBar.progress = progress;
         }
-
-        return "portrait-game";
-    }
-
-    updateProgressBar(progress: number): void {
-        this.percentResourceLoad && (this.percentResourceLoad.string = `${Math.round(progress * 100)}%`);
-        this.progressBar.progress = progress;
     }
 }
