@@ -20,12 +20,21 @@ export default class SplashOriginalPortrait extends SplashComponentBase {
     @property({ type: Prefab, override: true, visible: false })
     prefabCustomize: Prefab = null;
 
+    @property({ type: Prefab, override: true, visible: false })
+    prefabLogo: Prefab = null;
+
+    @property({ type: Node, override: true, visible: false })
+    nodeLogoContainer: Node = null;
+
     @property(ProgressBar)
     progressBar: ProgressBar = null;
 
     onLoad() {
         super.onLoad();
         this.updateProgressBar(0);
+    }
+
+    start() {
     }
 
     @render(Auth.AuthStore, (store) => store.system)

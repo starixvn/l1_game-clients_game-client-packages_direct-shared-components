@@ -8,11 +8,4 @@ const { ccclass, property } = _decorator;
 export class ErrorMessageOriginal extends ErrorMessage {
     @property(RandomWaitingMessageOriginal)
     cmpMessage: RandomWaitingMessageOriginal = null;
-
-    setMessage(message: string) {
-        if (this.cmpMessage) {
-            this.cmpMessage.reset();
-        }
-        this.lblMessage.string = message;
-    }
 }
