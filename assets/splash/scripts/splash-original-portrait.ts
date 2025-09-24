@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Node, Prefab, ProgressBar } from "cc";
+import { _decorator, ProgressBar } from "cc";
 import SplashComponentBase from "db://shared-components/splash/scripts/components/splash-component-base";
 import Observer from "observer";
 import { AdjustPortraitResolution } from "../../shared/common-components/adjust-portrait-resolution";
