@@ -4,7 +4,7 @@ const { ccclass } = _decorator;
 
 @ccclass("AdjustPortraitResolution")
 export class AdjustPortraitResolution extends Component {
-    private readonly portraitResolution = {
+    protected readonly portraitResolution = {
         width: 756,
         height: 1344,
     };

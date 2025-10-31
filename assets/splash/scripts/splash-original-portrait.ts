@@ -2,7 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, ProgressBar } from "cc";
 import SplashComponentBase from "db://shared-components/splash/scripts/components/splash-component-base";
 import Observer from "observer";
-import { AdjustPortraitResolution } from "../../shared/common-components/adjust-portrait-resolution";
+import { OriginalGameAdjustPortraitResolution } from "../../shared/common-components/original-game-adjust-portrait-resolution";
 
 const { ccclass, property } = _decorator;
 const { observer, render } = Observer;
@@ -25,7 +25,7 @@ export default class SplashOriginalPortrait extends SplashComponentBase {
     @render(Auth.AuthStore, (store) => store.system)
     adjustResolution(system: number) {
         if (system && system !== AppTypes.MobileDirect) {
-            this.node.addComponent(AdjustPortraitResolution);
+            this.node.addComponent(OriginalGameAdjustPortraitResolution);
         }
     }
 
