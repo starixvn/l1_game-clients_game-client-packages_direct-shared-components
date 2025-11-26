@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, instantiate, Node, Prefab } from "cc";
+import { _decorator, instantiate, Prefab } from "cc";
 import LoadBoostedOddsContainerPrefab from "db://shared-components/game/boosted-odds/scripts/load-boosted-odds-container-prefab";
 import { bundleManager } from "db://shared-components/shared/common-components/bundle-manager/bundle-manager";
 import Observer from "observer";
@@ -10,8 +10,6 @@ const { Notification } = gc;
 
 @ccclass("LoadBoostedOddsDirectContainerPrefab")
 export default class LoadBoostedOddsDirectContainerPrefab extends LoadBoostedOddsContainerPrefab {
-    @property(Node)
-    iconContainer: Node = null;
 
     protected static override readonly BundleConstants = {
         ...LoadBoostedOddsContainerPrefab.BundleConstants,
@@ -37,5 +35,5 @@ export default class LoadBoostedOddsDirectContainerPrefab extends LoadBoostedOdd
     }
 
     @handle(gc.Notification.NotificationHandlers.InitPromotionNotifications)
-    initPromotionNotifications() {}
+    initPromotionNotifications() { }
 }
