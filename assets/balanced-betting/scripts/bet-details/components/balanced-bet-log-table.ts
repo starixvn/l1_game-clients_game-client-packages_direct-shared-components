@@ -2,6 +2,7 @@ import { _decorator, Label, Node, Prefab, Sprite, SpriteFrame } from "cc";
 import { BetDetailLogTable } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-table";
 import gc from "@sg/game-client-base";
 import Observer from "observer";
+import { formatCurrencyWithConfig } from "db://shared-components/shared/utils";
 
 const { ccclass, property } = _decorator;
 const { observer, render } = Observer;
@@ -116,6 +117,6 @@ export class BalancedBetLogTable extends BetDetailLogTable {
         // Convert value using player rate
         const displayValue = Shared.utils.NumberUtils.getValueByCurrency(value, playerRate);
 
-        label.string = FormatUtils.numberWithCommas(displayValue, 2);
+        label.string = formatCurrencyWithConfig(displayValue);
     }
 }

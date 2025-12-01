@@ -3,7 +3,7 @@ import { _decorator, Label, Node } from "cc";
 import { BetDetailLogItemType } from "db://shared-components/game/bet-history/scripts/components/bet-detail/bet-detail-log-item";
 import Observer from "observer";
 import { BetRecord } from "../types/balanced-betting.types";
-import { shortenName } from "../../../../../../shared-components/assets/shared/utils/utils";
+import { formatCurrencyWithConfig, shortenName } from "../../../../../../shared-components/assets/shared/utils/utils";
 import { BaseBetDetailLogItem } from "../../../../../../shared-components/assets/game/bet-history/scripts/components/bet-detail/bet-detail-log-item";
 const { ccclass, property } = _decorator;
 const { render } = Observer;
@@ -76,9 +76,9 @@ export class BalancedBetDetailLogItem extends BaseBetDetailLogItem {
         const { refund, rate, amount } = this.betLog;
 
         const convertRefund = Shared.utils.NumberUtils.getValueByCurrency(refund, this.mainPlayerRate, rate);
-        this.lblRefund && (this.lblRefund.string = FormatUtils.numberWithCommas(convertRefund, 2));
+        this.lblRefund && (this.lblRefund.string = formatCurrencyWithConfig(convertRefund));
 
         const convertStake = Shared.utils.NumberUtils.getValueByCurrency(amount, this.mainPlayerRate, rate);
-        this.lblStake && (this.lblStake.string = FormatUtils.numberWithCommas(convertStake, 2));
+        this.lblStake && (this.lblStake.string = formatCurrencyWithConfig(convertStake));
     }
 }
